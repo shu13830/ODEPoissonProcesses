@@ -1,10 +1,10 @@
-# ODEPoissonProcesses.jl
+# ODE-guided Poisson processes
 
-[![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://shu13830.github.io/ODEPoissonProcesses.jl/stable)
+<!-- [![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://shu13830.github.io/ODEPoissonProcesses.jl/stable)
 [![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://shu13830.github.io/ODEPoissonProcesses.jl/dev)
-[![Build Status](https://github.com/shu13830/ODEPoissonProcesses.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/shu13830/ODEPoissonProcesses.jl/actions/workflows/CI.yml?query=branch%3Amain)
+[![Build Status](https://github.com/shu13830/ODEPoissonProcesses.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/shu13830/ODEPoissonProcesses.jl/actions/workflows/CI.yml?query=branch%3Amain) -->
 
-This repository contains the code used in our paper (https://openreview.net/forum?id=cJgHzw8Qhq).
+This computer program provides a reference implementation for [our paper](https://openreview.net/forum?id=cJgHzw8Qhq).
 
 This repository contains the following files:
 - `src/`: Julia implementation of
@@ -12,6 +12,22 @@ This repository contains the following files:
   - conventional ODE Models and its inference scheme, Gaussin Process-based Gradient Matching
 - `experiments/`: codes for replicating experiments in the paper
 - `experiments/data/`: The data used for the experiments
+
+## 1. Citation
+If you use this method or this code in your paper, then please cite our paper:
+
+```
+@article{
+  anonymous2023estimating,
+  title={Estimating Differential Equations from Temporal Point Processes},
+  author={Anonymous},
+  journal={Submitted to Transactions on Machine Learning Research},
+  year={2023},
+  url={https://openreview.net/forum?id=cJgHzw8Qhq},
+  note={Under review}
+}
+
+```
 
 ## 1. Installation
 - go to the directory where the files for this package are located (this README.md exists)
