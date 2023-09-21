@@ -118,7 +118,7 @@ ODEPoissonProcesses.float_times(dates, "YYYY/MM/DD")
 ```
 
 ### 3.2 Extrapolation
-During model initialization, it is possible to construct a model that also estimates the latent function of the extrapolation time range using the `ex_time` argument. The `ex_time` argument specifies how much additional time should be added as the extrapolaton time, assuming the interpolation time range is from 0 to 1. In the example below, the setting `ex_time=0.5` means that time 0~1 is the interpolation time with observations and 1~1.5 is the extrapolation time.
+During model initialization, it is possible to construct a model that also estimates the latent function of the extrapolation time range using the `ex_time` argument. The `ex_time` argument specifies how much additional time should be added as the extrapolaton time, assuming the interpolation time range is from 0 to 1. In the example below, the setting `ex_time=0.5` means that time 0-1 is the interpolation time range with observations and 1-1.5 is the extrapolation time range.
 ```julia
 mod = PredatorPreyPoissonProcess(times, classes; λ0=100.0, ex_time=0.5)
 ```
