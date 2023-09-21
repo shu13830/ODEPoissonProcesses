@@ -1,8 +1,8 @@
 # ODE-guided Poisson processes
 
-<!-- [![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://shu13830.github.io/ODEPoissonProcesses.jl/stable)
-[![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://shu13830.github.io/ODEPoissonProcesses.jl/dev)
-[![Build Status](https://github.com/shu13830/ODEPoissonProcesses.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/shu13830/ODEPoissonProcesses.jl/actions/workflows/CI.yml?query=branch%3Amain) -->
+<!-- [![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://shu13830.github.io/ODEPoissonProcesses/stable)
+[![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://shu13830.github.io/ODEPoissonProcesses/dev)
+[![Build Status](https://github.com/shu13830/ODEPoissonProcesses/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/shu13830/ODEPoissonProcesses/actions/workflows/CI.yml?query=branch%3Amain) -->
 
 This computer program provides a reference implementation for [our paper](https://openreview.net/forum?id=cJgHzw8Qhq).
 
@@ -18,18 +18,19 @@ If you use this method or this code in your paper, then please cite our paper:
 
 ```
 @article{
-  anonymous2023estimating,
+  miyazawa2023estimating,
   title={Estimating Differential Equations from Temporal Point Processes},
-  author={Anonymous},
-  journal={Submitted to Transactions on Machine Learning Research},
+  author={Shuichi Miyazawa and Daichi Mochihashi},
+  journal={Transactions on Machine Learning Research},
+  issn={2835-8856},
   year={2023},
   url={https://openreview.net/forum?id=cJgHzw8Qhq},
-  note={Under review}
+  note={}
 }
 
 ```
 
-## 1. Installation
+## 2. Installation
 - go to the directory where the files for this package are located (this README.md exists)
 - launch julia in cmd and open julia REPL
 ```cmd
@@ -65,7 +66,7 @@ julia> using ODEPoissonProcesses
 # running precompilation ... 
 ```
 
-### 1.1 [*OPTION*] use this package in jupyter notebooks
+### 2.1 [*OPTION*] use this package in jupyter notebooks
 - (Prerequisite) jupyter notebook must be installed.
 - activate virtual environment of this pakcage
 - add IJulia package
@@ -78,9 +79,9 @@ julia> IJulia.installkernel("ODEPoissonProcesses", "--project=$(Base.active_proj
 # after this you can choose the "LGCPGradientMacthing" kernel on jupyter notebook
 ```
 
-## 2. Usage
+## 3. Usage
 
-### ODE parameter estimation from event data
+### 3.1 ODE parameter estimation from event data
 ```julia
 using ODEPoissonProcesses  # take minutes for precompilation
 
@@ -116,20 +117,20 @@ ODEPoissonProcesses.float_times(dates, "YYYY/MM/DD")
  2023.0
 ```
 
-### Extrapolation
+### 3.2 Extrapolation
 During model initialization, it is possible to construct a model that also estimates the latent function of the extrapolation time range using the `ex_time` argument. The `ex_time` argument specifies how much additional time should be added as the extrapolaton time, assuming the interpolation time range is from 0 to 1. In the example below, the setting `ex_time=0.5` means that time 0~1 is the interpolation time with observations and 1~1.5 is the extrapolation time.
 ```julia
 mod = PredatorPreyPoissonProcess(times, classes; λ0=100.0, ex_time=0.5)
 ```
 
-### Models with other ODEs
+### 3.3 Models with other ODEs
 ```julia
 mod = CompetitionPoissonProcess(times, classes; λ0=100.0)
 mod = SIRPoissonProcess(times, classes; λ0=100.0)
 mod = InfectedPoissonProcess(times, classes; λ0=100.0)
 ```
 
-### Further settings of model parameters
+### 3.4 Further settings of model parameters
 You can set the parameters of the model by giving them as arguments. The following is a list of the parameters that can be set.
 - `from_to::Tuple{Float64,Float64}`: 
 - `is_λ0_unified::Bool`: 
@@ -143,7 +144,7 @@ You can set the parameters of the model by giving them as arguments. The followi
 - `lscale::Float64`: length scale parameter of the kernel function. Default: `0.3`
 - `δ::Float64`: white noise parameter of the kernel function. Default: `0.01`
 
-### Further settings of chain parameters
+### 3.5 Further settings of chain parameters
 You can set chain parameters when chain is initialized.
 ```julia
 chain = Chain(mod;
@@ -181,7 +182,7 @@ chain = train!(mod, 10000, chain;
 ```
 
 
-### Models using GP-based Gradient Matching
+### 3.6 Models using GP-based Gradient Matching
 
 ```julia
 mod = PredatorPreyModel(times, classes; λ0=100.0)
@@ -189,7 +190,7 @@ mod = CompetitionModel(times, classes; λ0=100.0)
 mod = SIRModel(times, classes; λ0=100.0)
 ```
 
-### Reproduce Experiments
+## 4. Reproduce Experiments
 
 ```julia
 import Pkg
